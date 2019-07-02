@@ -5,13 +5,9 @@ import { withRouter } from 'react-router';
 const { MenuItem } = Menu;
 
 const SideNav = (props: any) => {
-  console.log('sideNav props', props);
   const handleMenuClick = (e: React.MouseEvent<HTMLDivElement | HTMLLIElement, MouseEvent>, key: string) => {
     props.history.push(key);
   }
-  console.log(
-    props.location.pathname.replace('/', '')
-  )
   return (
     <Menu
       mode="inline"

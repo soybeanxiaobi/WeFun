@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const apiMocker = require('webpack-api-mocker')
+
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
@@ -47,6 +49,10 @@ module.exports = {
       errors: true
     },
     inline: true,
-    hot: true
+    hot: true,
+    // api mocker
+    before(app) {
+      apiMocker(app, path.resolve(__dirname, "./mock/index.tsx"));
+    }
   }
 };
