@@ -1,6 +1,5 @@
-const JOKE = require("./joke.tsx");
+const JOKE_API = require("./joke.tsx");
 const _proxy = process.env.proxy;
-console.log('_proxy ===>', _proxy);
 let proxy = {};
 if (_proxy) {
   proxy = {
@@ -19,8 +18,7 @@ if (_proxy) {
     /**
      * Mock
      */
-    ...JOKE
+    ...JOKE_API
   };
 }
-console.log('proxy ===>', proxy)
 module.exports = proxy;
