@@ -21,9 +21,9 @@ export default function App() {
           <SideNav />
         </Col>
         <Col span={20}>
-          <Route path="/">
+          {/* <Route exact path="/">
             <Redirect to="/joke" />
-          </Route>
+          </Route> */}
           <Route path="/joke" component={Joke} />
           <Route path="/riddle" component={Riddle} />
         </Col>
