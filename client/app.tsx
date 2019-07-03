@@ -7,6 +7,7 @@ import { Riddle } from './pages/Riddle/index';
 import SideNav from './pages/container/SideNav';
 import HeaderNav from './pages/container/HeaderNav';
 
+import './app.scss';
 // 引入zent样式
 import 'zent/css/index.css';
 
@@ -20,7 +21,7 @@ export default function App() {
         <Col span={4}>
           <SideNav />
         </Col>
-        <Col span={20}>
+        <Col span={20} className="right-content">
           {/* <Route exact path="/">
             <Redirect to="/joke" />
           </Route> */}
