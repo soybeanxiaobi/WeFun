@@ -13,11 +13,12 @@ const reducer = combineReducers({
 
 /**
  * redux-thunk作用:
- * 
+ *  https://juejin.im/post/5b035c0c51882565bd258f12
  */
 
  /**
-  * redux插件: appluMiddleware()
+  * redux插件: applyMiddleware()
+  * https://cn.redux.js.org/docs/api/applyMiddleware.html
   */
 
 export const store = createStore(reducer)

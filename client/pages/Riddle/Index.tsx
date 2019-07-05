@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Loading, Card, Notify, Collapse } from 'zent';
+import { connect } from 'react-redux';
 
 import { fetchRiddleList } from '../../services/riddle';
 import './index.scss';
@@ -50,3 +51,12 @@ export const Riddle = (props: any) => {
     </div>
   )
 }
+
+const mapStateToProps = (state: IRiddleList): IRiddleList => {
+  return {
+    ...state
+    // list: state.list
+  }
+};
+
+export default connect(mapStateToProps)(Riddle);

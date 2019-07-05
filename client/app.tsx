@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 
 import {store} from './reducers';
 
-import Joke from './pages/Joke/index';
-import { Riddle } from './pages/Riddle/index';
+import Home from './pages/Home';
+import Joke from './pages/Joke';
+import Riddle from './pages/Riddle';
 import SideNav from './pages/container/SideNav';
 import HeaderNav from './pages/container/HeaderNav';
 
@@ -26,9 +27,7 @@ export default function App() {
           <SideNav />
         </Col>
         <Col span={20} className="right-content">
-          {/* <Route exact path="/">
-            <Redirect to="/joke" />
-          </Route> */}
+          <Route exact path="/" component={Home} />
           <Route path="/joke" component={Joke} />
           <Route path="/riddle" component={Riddle} />
         </Col>
