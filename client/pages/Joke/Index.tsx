@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children, ReactNode } from 'react';
 import { Card, Loading, Notify } from 'zent';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,7 @@ import { fetchJokeList } from '../../actions/joke';
 import './index.scss';
 
 /**
- * 因为未来不推荐hooks管理接口数据,故用redux替代异步获取数据方式
+ * 未来不推荐hooks管理接口数据,故用redux替代异步获取数据方式
  */
 interface IJokeList {
   // jokeReducer: {
@@ -20,7 +20,7 @@ interface IJokeList {
   // }
 }
 
-export const Joke = (props: any) => {
+export const Joke: React.StatelessComponent<{}>  = (props: any) => {
   // const [list, setList] = useState(false);
   // const [loading, setIsLoading] = useState(false);
   const { joke: {
@@ -40,11 +40,11 @@ export const Joke = (props: any) => {
     // }
     // asyncFetch();
     fetchJokeList();
-  }, []); // 仅初次渲染触发,即componentDidMount
+  }, []); // 第二个参数为[]的作用是仅初次渲染触发,即componentDidMount
   return (
     <div className="joke-wrapper">{
       !list.length ? <Loading show={true} /> : list.map((item: {id: number, title: string, content: string}) => (
-        <Card key={item.id} title={item.title || ''} className="card-style">
+        <Card key={item.id} title={item.title} className="card-style">
           <p>{item.content}</p>
         </Card>
       ))}
