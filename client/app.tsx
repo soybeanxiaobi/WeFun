@@ -1,8 +1,11 @@
 import React from 'react';
 import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Layout } from 'zent';
+import { Provider } from 'react-redux';
 
-import { Joke } from './pages/Joke/index';
+import {store} from './reducers';
+
+import Joke from './pages/Joke/index';
 import { Riddle } from './pages/Riddle/index';
 import SideNav from './pages/container/SideNav';
 import HeaderNav from './pages/container/HeaderNav';
@@ -15,6 +18,7 @@ const { Row, Col } = Layout
 
 export default function App() {
   return (
+    <Provider store={store}>
     <Router>
       <HeaderNav />
       <Row>
@@ -30,5 +34,6 @@ export default function App() {
         </Col>
       </Row>
     </Router>
+    </Provider>
   )
 }

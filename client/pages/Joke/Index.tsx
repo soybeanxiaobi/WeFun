@@ -1,36 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Loading, Notify } from 'zent';
+import { connect } from 'react-redux';
 
 // import { dispatch } from '../../utils/dispatch';
-import { fetchJokeList } from '../../services/joke';
+// import { fetchJokeList } from '../../services/joke';
+import { fetchJokeList } from '../../actions/joke';
 import './index.scss';
 
+/**
+ * 因为未来不推荐hooks管理接口数据,故用redux替代异步获取数据方式
+ */
 interface IJokeList {
-  id: number;
-  title: string;
-  content: string;
+  // jokeReducer: {
+    list: Array<{
+      id: number;
+      title: string;
+      content: string;
+    }>
+  // }
 }
 
-export const Joke = () => {
-  const [jokeList, setJokeList] = useState([]);
-  const [loading, setIsLoading] = useState(false);
+export const Joke = (props: any) => {
+  // const [list, setList] = useState(false);
+  // const [loading, setIsLoading] = useState(false);
+  const { joke: {
+    list = []
+  } } = props;
   // const { data, loading } = dispatch((service: fetchJokeList));
   useEffect(() => {
-    const asyncFetch = async () => {
-      setIsLoading(true);
-      try {
-        const result = await fetchJokeList();
-        setJokeList(result.data);
-      } catch (err) {
-        Notify.error(err);
-      }
-      setIsLoading(false);
-    }
-    asyncFetch();
-  }, []);
+    // const asyncFetch = async () => {
+    //   setIsLoading(true);
+    //   try {
+    //     const result: any = await fetchJokeList();
+    //     // setJokeList(result.data || []);
+    //   } catch (err) {
+    //     Notify.error(err);
+    //   }
+    //   setIsLoading(false);
+    // }
+    // asyncFetch();
+    fetchJokeList();
+  }, []); // 仅初次渲染触发,即componentDidMount
   return (
     <div className="joke-wrapper">{
-      loading ? <Loading show={true} /> : jokeList.map((item: IJokeList) => (
+      !list.length ? <Loading show={true} /> : list.map((item: {id: number, title: string, content: string}) => (
         <Card key={item.id} title={item.title || ''} className="card-style">
           <p>{item.content}</p>
         </Card>
@@ -38,3 +51,12 @@ export const Joke = () => {
     </div>
   )
 }
+
+const mapStateToProps = (state: IJokeList): IJokeList => {
+  return {
+    ...state
+    // list: state.list
+  }
+};
+
+export default connect(mapStateToProps)(Joke);

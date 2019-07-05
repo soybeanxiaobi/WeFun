@@ -31,7 +31,7 @@ export const Riddle = (props: any) => {
     asyncFetch();
   }, []);
 
-  const handleCollapseChange = (activeKey: any): any => {
+  const handleCollapseChange = (activeKey: any) => {
     setActiveKey(activeKey);
   }
 
