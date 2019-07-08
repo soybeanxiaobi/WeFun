@@ -7,8 +7,6 @@ const initState = {
   list: []
 } 
 export const riddleReducer = (state: riddleState = initState, action: IAction) => {
-  console.log('state', state);
-  console.log('action', action);
   switch (action.type) {
     case 'SET_RIDDLE_LIST':
       return {
