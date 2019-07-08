@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Children, ReactNode } from 'react';
-import { Card, Loading, Notify } from 'zent';
+import React, { useEffect } from 'react';
+import { Card, Loading } from 'zent';
 import { connect } from 'react-redux';
 
 // import { dispatch } from '../../utils/dispatch';
