@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 
 import { jokeReducer } from './joke';
+import { riddleReducer } from './riddle';
 
 /**
  * combineReducers 辅助函数的作用
@@ -9,6 +10,7 @@ import { jokeReducer } from './joke';
  */
 const reducer = combineReducers({
   joke: jokeReducer,
+  riddle: riddleReducer,
 })
 
 /**
